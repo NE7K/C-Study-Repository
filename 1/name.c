@@ -1,7 +1,6 @@
 #include <stdio.h>
 
 int main() {
-    printf("학번\n");
-    printf("이름");
+    printf("I have dream\n2020U2324 장성준");
     return 0;
 }
