@@ -15,19 +15,21 @@ int main() {
     int A[SIZE], B[SIZE];
     int choice;
 
+    // 메뉴 한 번만 출력
+    printf("\n====== 집합 연산 메뉴 ======\n");
+    printf("1. AND (교집합)\n");
+    printf("2. OR (합집합)\n");
+    printf("3. XOR (차집합)\n");
+    printf("4. Quit (종료)\n");
+
     while (1) {
+        // 사용자 선택
+        printf("\n선택 (1-4) : ");
+        scanf("%d", &choice);
+
         // 파일에서 숫자 읽기
         readFile("A.txt", A);
         readFile("B.txt", B);
-
-        // 메뉴 출력
-        printf("\n====== 집합 연산 메뉴 ======\n");
-        printf("1. AND (교집합)\n");
-        printf("2. OR (합집합)\n");
-        printf("3. XOR (차집합)\n");
-        printf("4. Quit (종료)\n");
-        printf("선택 (1-4) : ");
-        scanf("%d", &choice);
 
         switch (choice) {
             case 1:
@@ -106,16 +108,14 @@ void orOperation(const int a[], const int b[]) {
     printf("\n");
 }
 
-// 차집합 (A - B, B - A 모두 포함한 대칭차)
+// 차집합 (대칭차: A - B, B - A)
 void xorOperation(const int a[], const int b[]) {
-    // A 중 B에 없는 것
     for (int i = 0; i < SIZE; i++) {
         if (!isInArray((int*)b, SIZE, a[i])) {
             printf("%d ", a[i]);
         }
     }
 
-    // B 중 A에 없는 것
     for (int i = 0; i < SIZE; i++) {
         if (!isInArray((int*)a, SIZE, b[i])) {
             printf("%d ", b[i]);
